@@ -50,52 +50,76 @@
         }
     </style>
 
-    <script>
-            // Newsletter JS (kept same logic)
-            (function () {
-                const form = document.getElementById('newsletter-form');
-                if (!form) return;
-                const input = form.querySelector('input[type="email"]');
-                const btn = form.querySelector('button[type="submit"]');
-                const msg = form.querySelector('.msg');
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('newsletter-form');
+        if (!form) return;
 
-                form.addEventListener('submit', async e => {
-                    e.preventDefault();
-                    const email = (input.value || '').trim();
-                    if (!email) return msg.textContent = 'Vui lòng nhập email.';
-                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return msg.textContent = 'Email không hợp lệ.';
+        const input = form.querySelector('input[type="email"]');
+        const btn = form.querySelector('button[type="submit"]');
+        const msg = form.querySelector('.msg');
 
-                    btn.disabled = true;
-                    const old = btn.textContent;
-                    btn.textContent = 'Sending...';
-                    msg.textContent = '';
+        const ERROR_COLOR = '#ff6b6b';
+        const SUCCESS_COLOR = '#4ade80';
+        const DEFAULT_COLOR = '';
 
-                    try {
-                        const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ email, metadata: { source: 'footer', page: location.pathname } })
-                        });
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            const email = (input.value || '').trim();
 
-                        if (res.ok) {
-                            msg.textContent = 'Cảm ơn — bạn đã được đăng ký!';
-                            form.reset();
-                        } else {
-                            let err = 'Có lỗi, vui lòng thử lại.';
-                            try { const j = await res.json(); if (j && j.message) err = j.message } catch (_) { }
-                            msg.textContent = err;
-                        }
-                    } catch (err) {
-                        msg.textContent = 'Lỗi kết nối. Vui lòng kiểm tra mạng.';
-                        console.error(err);
-                    } finally {
-                        btn.disabled = false;
-                        btn.textContent = old;
-                    }
+            // Validation
+            if (!email) {
+                msg.textContent = 'Please enter your email.';
+                msg.style.color = ERROR_COLOR;
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                msg.textContent = 'Invalid email address.';
+                msg.style.color = ERROR_COLOR;
+                return;
+            }
+
+            // UI loading state
+            btn.disabled = true;
+            const oldText = btn.textContent;
+            btn.textContent = 'Sending...';
+            msg.textContent = '';
+            msg.style.color = DEFAULT_COLOR;
+
+            try {
+                const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email,
+                        metadata: { source: 'footer', page: location.pathname }
+                    })
                 });
-            })();
-    </script>
-</head>
+
+                if (res.ok) {
+                    msg.textContent = 'Thank you — you have been subscribed!';
+                    msg.style.color = SUCCESS_COLOR;
+                    form.reset();
+                } else {
+                    let err = 'Something went wrong, please try again.';
+                    try {
+                        const j = await res.json();
+                        if (j && j.message) err = j.message;
+                    } catch (_) { }
+                    msg.textContent = err;
+                    msg.style.color = ERROR_COLOR;
+                }
+            } catch (err) {
+                msg.textContent = 'Connection error. Please check your network.';
+                msg.style.color = ERROR_COLOR;
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = oldText;
+            }
+        });
+    });
+</script>
 
 <body class="bg-brand-bg font-main">
 
