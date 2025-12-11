@@ -50,76 +50,76 @@
         }
     </style>
 
- <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('newsletter-form');
-        if (!form) return;
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletter-form');
+            if (!form) return;
 
-        const input = form.querySelector('input[type="email"]');
-        const btn = form.querySelector('button[type="submit"]');
-        const msg = form.querySelector('.msg');
+            const input = form.querySelector('input[type="email"]');
+            const btn = form.querySelector('button[type="submit"]');
+            const msg = form.querySelector('.msg');
 
-        const ERROR_COLOR = '#ff6b6b';
-        const SUCCESS_COLOR = '#4ade80';
-        const DEFAULT_COLOR = '';
+            const ERROR_COLOR = '#ff6b6b';
+            const SUCCESS_COLOR = '#4ade80';
+            const DEFAULT_COLOR = '';
 
-        form.addEventListener('submit', async e => {
-            e.preventDefault();
-            const email = (input.value || '').trim();
+            form.addEventListener('submit', async e => {
+                e.preventDefault();
+                const email = (input.value || '').trim();
 
-            // Validation
-            if (!email) {
-                msg.textContent = 'Please enter your email.';
-                msg.style.color = ERROR_COLOR;
-                return;
-            }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                msg.textContent = 'Invalid email address.';
-                msg.style.color = ERROR_COLOR;
-                return;
-            }
-
-            // UI loading state
-            btn.disabled = true;
-            const oldText = btn.textContent;
-            btn.textContent = 'Sending...';
-            msg.textContent = '';
-            msg.style.color = DEFAULT_COLOR;
-
-            try {
-                const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        email,
-                        metadata: { source: 'footer', page: location.pathname }
-                    })
-                });
-
-                if (res.ok) {
-                    msg.textContent = 'Thank you — you have been subscribed!';
-                    msg.style.color = SUCCESS_COLOR;
-                    form.reset();
-                } else {
-                    let err = 'Something went wrong, please try again.';
-                    try {
-                        const j = await res.json();
-                        if (j && j.message) err = j.message;
-                    } catch (_) { }
-                    msg.textContent = err;
+                // Validation
+                if (!email) {
+                    msg.textContent = 'Please enter your email.';
                     msg.style.color = ERROR_COLOR;
+                    return;
                 }
-            } catch (err) {
-                msg.textContent = 'Connection error. Please check your network.';
-                msg.style.color = ERROR_COLOR;
-                console.error(err);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = oldText;
-            }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    msg.textContent = 'Invalid email address.';
+                    msg.style.color = ERROR_COLOR;
+                    return;
+                }
+
+                // UI loading state
+                btn.disabled = true;
+                const oldText = btn.textContent;
+                btn.textContent = 'Sending...';
+                msg.textContent = '';
+                msg.style.color = DEFAULT_COLOR;
+
+                try {
+                    const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            email,
+                            metadata: { source: 'footer', page: location.pathname }
+                        })
+                    });
+
+                    if (res.ok) {
+                        msg.textContent = 'Thank you — you have been subscribed!';
+                        msg.style.color = SUCCESS_COLOR;
+                        form.reset();
+                    } else {
+                        let err = 'Something went wrong, please try again.';
+                        try {
+                            const j = await res.json();
+                            if (j && j.message) err = j.message;
+                        } catch (_) { }
+                        msg.textContent = err;
+                        msg.style.color = ERROR_COLOR;
+                    }
+                } catch (err) {
+                    msg.textContent = 'Connection error. Please check your network.';
+                    msg.style.color = ERROR_COLOR;
+                    console.error(err);
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = oldText;
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 <body class="bg-brand-bg font-main">
 
@@ -243,7 +243,7 @@
 
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="flex flex-col items-start">
-                    <div class="w-[90%] aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
+                    <div class="aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
                         <img src="assets/product1.jpg" alt="Guided Into Stillness" class="w-full h-full object-cover">
                     </div>
                     <h3 class="uppercase tracking-wider font-semibold text-base">Guided Into Stillness — 1:1 Coaching
@@ -252,7 +252,7 @@
                 </div>
 
                 <div class="flex flex-col items-start">
-                    <div class="w-[90%] aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
+                    <div class="aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
                         <img src="assets/product2.jpg" alt="Socratic Dialogues" class="w-full h-full object-cover">
                     </div>
                     <h3 class="uppercase tracking-wider font-semibold text-base">Socratic Dialogues</h3>
@@ -301,16 +301,16 @@
                     <p class="mb-6 font-['Roboto',sans-serif] italic text-[#ccc]">Returning you to the deep, lasting
                         peace that is your birthright.</p>
                     <div class="flex gap-4">
-                    
+
                         <!-- Instagram FULL PATH -->
-                        <a href="https://www.instagram.com/calm.mind.coach_nick/" target="_blank" rel="noopener noreferrer"
-                            class="transition-opacity hover:opacity-70">
+                        <a href="https://www.instagram.com/calm.mind.coach_nick/" target="_blank"
+                            rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
                             <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                         </a>
-                    
+
                         <!-- YouTube FULL PATH -->
                         <a href="https://www.youtube.com/@calm_mind_coachnick" target="_blank" rel="noopener noreferrer"
                             class="transition-opacity hover:opacity-70">
@@ -319,7 +319,7 @@
                                     d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                             </svg>
                         </a>
-                    
+
                         <!-- TikTok FULL PATH -->
                         <a href="https://www.tiktok.com/@calm.mind.coach_nick" target="_blank" rel="noopener noreferrer"
                             class="transition-opacity hover:opacity-70">
@@ -328,16 +328,16 @@
                                     d="M12.003 2.003c-.01 0-.02 0-.03 0-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10v-.003h-4.002c0 3.314-2.686 6-6 6s-6-2.686-6-6c0-3.313 2.686-6 6-6 .01 0 .02 0 .03 0v4.002c-.01 0-.02 0-.03 0-1.104 0-2 .896-2 2s.896 2 2 2c1.104 0 2-.896 2-2v-6.002h4.002v4.002c0 .01 0 .02 0 .03 0 5.523-4.477 10-10 10s-10-4.477-10-10c0-5.523 4.477-10 10-10 .01 0 .02 0 .03 0v4.002z" />
                             </svg>
                         </a>
-                    
+
                         <!-- Spotify FULL PATH -->
-                        <a href="https://open.spotify.com/show/54ZbDsSPyJTXJ9SvFlkiBl?si=b5e567932d134cac" target="_blank"
-                            rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
+                        <a href="https://open.spotify.com/show/54ZbDsSPyJTXJ9SvFlkiBl?si=b5e567932d134cac"
+                            target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
                             <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.454 17.309c-.236.385-.73.5-1.115.264-3.042-1.857-6.888-2.273-11.397-1.197-.414.113-.85-.129-.963-.544-.113-.415.13-.85.544-.963 4.849-1.322 8.993-.847 12.33 1.356.385.236.5.73.264 1.115zm1.581-3.631c-.295.48-.936.625-1.416.33-3.484-2.14-8.803-2.759-12.926-1.45-.52.16-1.092-.144-1.252-.664-.16-.52.144-1.092.664-1.252 4.703-1.448 10.522-.796 14.396 1.606.48.295.625.936.33 1.416zm0-3.631c-.354.577-1.123.75-1.7.396-3.926-2.432-10.093-2.641-13.986-1.388-.635.195-1.33-.178-1.525-.813-.195-.635.178-1.33.813-1.525 4.313-1.327 11.034-1.084 15.211 1.515.577.354 .75 1 .396 1.7z" />
                             </svg>
                         </a>
-                    
+
                     </div>
 
                 </div>
