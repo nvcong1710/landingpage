@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Nick Cabrejos | Radical Self-Forgiveness</title>
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,703 +15,343 @@
     <link href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    <!-- Tailwind CDN + small config -->
+    <script>
+        tailwind = window.tailwind || {};
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#c9d6de',
+                        'brand-accent': '#bd8949',
+                        'light-blue-section': '#CFE0E8',
+                        'footer-bg': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        main: ['Poppins', 'sans-serif'],
+                        serifCustom: ['Roboto', 'serif'],
+                        hand: ['"Homemade Apple"', 'cursive']
+                    },
+                    boxShadow: {
+                        'offset': '20px 20px 0 #dee7e6'
+                    },
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        :root {
-            --bg-color: #c9d6de;
-            --text-color: #000000;
-            --heading-color: #000000;
-            --btn-border: #111;
-            --footer-bg: #1a1a1a;
-            --footer-text: #e0e0e0;
-            --container-width: 1200px;
-            --font-main: 'Poppins', sans-serif;
-            --font-serif: 'Roboto', sans-serif;
-        }
-
-        /* --- 3 CORE TEXT STYLES (UNIFIED) --- */
-
-        /* 1. Large Heading: Serif, Bold, Uppercase */
-        .large-heading {
-            font-family: var(--font-serif);
-            font-weight: 700;
-            text-transform: uppercase;
-            line-height: 1.2;
-            color: var(--heading-color);
-            font-size: 36px;
-            padding-bottom: 10px;
-        }
-
-        /* 2. Medium Heading: Sans-serif, Bold, Uppercase, Small */
-        .medium-heading {
-            font-family: var(--font-main);
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--heading-color);
-            text-decoration: none;
-            transition: 0.3s;
-            padding-bottom: 10px;
-        }
-
-        /* 3. Normal Text: Sans-serif, Regular, Readable */
-        .normal-text {
-            font-family: var(--font-main);
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 1.8;
-            color: var(--text-color);
-            text-decoration: none;
-            padding-bottom: 10px;
-        }
-
-        /* --- GLOBAL RESET & LAYOUT --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            font-family: var(--font-main);
-        }
-
-        /* Default font fallback */
         img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             display: block;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* --- HEADER --- */
-        header {
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            background-color: rgba(251, 249, 237, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        /* Layout specific overrides only (No fonts) */
-        .logo {
-            font-size: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        /* Override size for logo */
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.6;
-        }
-
-        .btn-login {
-            padding: 10px 24px;
-            border: 1px solid var(--btn-border);
-            border-radius: 4px;
-            display: inline-block;
-            background-color: #bd8949;
-        }
-
-        .btn-login:hover {
-            background-color: var(--heading-color);
-            color: #fff;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            padding: 80px 0 60px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .story-content h1 {
-            margin-bottom: 10px;
-        }
-
-        .story-text p {
-            margin-bottom: 20px;
-            color: #4a4a4a;
-            text-align: justify;
-        }
-
-        .main-image-wrapper {
-            height: 600px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 20px 20px 0 #dee7e6;
-        }
-
-        /* --- ABOUT SPLIT SECTION --- */
-        .about-split-section {
-            background-color: #dee7e6;
-            width: 100%;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .about-split-container {
-            display: grid;
-            width: 80%;
-            margin: 0 auto;
-            grid-template-columns: 1fr 2fr;
-        }
-
-        .about-image-side {
-            position: relative;
-            height: 100%;
-        }
-
-        .about-content-side {
-            padding: 20px 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .display-title {
-            font-size: 3rem;
-        }
-
-        /* Layout specific size override */
-        .display-subtitle {
-            margin-bottom: 40px;
-            border-left: 2px solid #000;
-            padding-left: 15px;
-            letter-spacing: 3px;
-        }
-
-        .display-text {
-            text-align: justify;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--footer-bg);
-            color: var(--footer-text);
-            padding: 80px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 60px;
-        }
-
-        .footer-col h4 {
-            color: #fff;
-            margin-bottom: 25px;
-            letter-spacing: 1.5px;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        /* Context specific colors for normal-text in footer */
-        .footer-links a.normal-text,
-        .footer-bottom span.normal-text,
-        .footer-bottom a.normal-text,
-        p.normal-text {
-            color: inherit;
-            font-size: 14px;
-            /* Slight adjustment for footer hierarchy */
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .newsletter-form input {
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid #444;
-            color: #fff;
-        }
-
-        .btn-subscribe {
-            padding: 12px;
-            background: #fff;
-            color: #000;
-            border: none;
-            cursor: pointer;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #333;
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            color: #666;
-            font-size: 12px;
-        }
-
-        /* --- PRODUCTS SECTION --- */
-        .products-section {
-            padding: 30px 0;
-            background-color: var(--bg-color);
-            /* Giữ màu nền đồng nhất */
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            /* Khoảng cách giữa 2 cột */
-        }
-
-        .product-card {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .product-image-container {
-            width: 90%;
-            aspect-ratio: 7/5;
-            overflow: hidden;
-            margin-bottom: 25px;
-            background-color: #bd8949;
-        }
-
-        .product-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        /* Hiệu ứng zoom nhẹ khi di chuột vào ảnh */
-        .product-image-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-title {
-            margin-bottom: 5px;
-            line-height: 1.3;
-        }
-
-        /* Responsive cho điện thoại */
-        @media (max-width: 900px) {
-            .products-grid {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .hero-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .main-image-wrapper {
-                height: 400px;
-                order: 1;
-            }
-
-            .story-content {
-                order: 2;
-            }
-
-            .about-split-container {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image-side {
-                height: 500px;
-            }
-
-            .about-content-side {
-                padding: 50px 24px;
-            }
-
-            .display-title {
-                font-size: 3.5rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-        }
-
-        /* --- NEW: GALLERY & TEXT SECTION (Light Blue) --- */
-        .gallery-text-section {
-            /* Màu xanh nhạt. Bạn có thể đổi mã màu khác nếu muốn, ví dụ: #d0e3ed */
-            background-color: #CFE0E8;
-            padding: 80px 0;
-        }
-
-        .gallery-row {
-            display: flex;
-            /* Đặt chiều cao cố định cho cả hàng để ép các ảnh bằng nhau */
-            height: 320px;
-            gap: 20px;
-            /* Khoảng cách giữa các ảnh */
-            margin-bottom: 40px;
-            /* Khoảng cách xuống phần text bên dưới */
-        }
-
-        .gallery-item {
-            height: 100%;
-            overflow: hidden;
-            border-radius: 4px;
-            /* Bo góc nhẹ cho ảnh */
-            position: relative;
-        }
-
-        .aspect-landscape {
-            flex: 5;
-        }
-
-        .aspect-portrait {
-            flex: 3.5;
-        }
-
-        /* Đảm bảo ảnh phủ kín khung chứa mà không bị méo */
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-text-bottom {
-            margin: 0 auto;
-        }
-
-        /* --- RESPONSIVE CHO SECTION NÀY --- */
-        @media (max-width: 900px) {
-            .gallery-row {
-                flex-direction: column;
-                /* Xếp chồng lên nhau trên mobile */
-                height: auto;
-                /* Bỏ chiều cao cố định */
-                gap: 30px;
-            }
-
-            .gallery-item {
-                width: 100%;
-                height: 250px;
-            }
-
-            /* Reset lại flex khi xếp chồng */
-            .aspect-landscape,
-            .aspect-portrait {
-                flex: auto;
-            }
         }
     </style>
+
     <script>
-        (function () {
-            const form = document.getElementById('newsletter-form');
-            if (!form) return;
-            const input = form.querySelector('input[type="email"]');
-            const btn = form.querySelector('button[type="submit"]');
-            const msg = form.querySelector('.msg');
+            // Newsletter JS (kept same logic)
+            (function () {
+                const form = document.getElementById('newsletter-form');
+                if (!form) return;
+                const input = form.querySelector('input[type="email"]');
+                const btn = form.querySelector('button[type="submit"]');
+                const msg = form.querySelector('.msg');
 
-            form.addEventListener('submit', async e => {
-                e.preventDefault();
-                const email = (input.value || '').trim();
-                if (!email) return msg.textContent = 'Vui lòng nhập email.';
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return msg.textContent = 'Email không hợp lệ.';
+                form.addEventListener('submit', async e => {
+                    e.preventDefault();
+                    const email = (input.value || '').trim();
+                    if (!email) return msg.textContent = 'Vui lòng nhập email.';
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return msg.textContent = 'Email không hợp lệ.';
 
-                btn.disabled = true;
-                const old = btn.textContent;
-                btn.textContent = 'Sending...';
-                msg.textContent = '';
+                    btn.disabled = true;
+                    const old = btn.textContent;
+                    btn.textContent = 'Sending...';
+                    msg.textContent = '';
 
-                try {
-                    const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email, metadata: { source: 'footer', page: location.pathname } })
-                    });
+                    try {
+                        const res = await fetch('https://nick-cabrejos-academy-858469445032.asia-southeast1.run.app/api/v1/earlybird/users', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, metadata: { source: 'footer', page: location.pathname } })
+                        });
 
-                    if (res.ok) {
-                        msg.textContent = 'Cảm ơn — bạn đã được đăng ký!';
-                        form.reset();
-                    } else {
-                        let err = 'Có lỗi, vui lòng thử lại.';
-                        try { const j = await res.json(); if (j && j.message) err = j.message } catch (_) { }
-                        msg.textContent = err;
+                        if (res.ok) {
+                            msg.textContent = 'Cảm ơn — bạn đã được đăng ký!';
+                            form.reset();
+                        } else {
+                            let err = 'Có lỗi, vui lòng thử lại.';
+                            try { const j = await res.json(); if (j && j.message) err = j.message } catch (_) { }
+                            msg.textContent = err;
+                        }
+                    } catch (err) {
+                        msg.textContent = 'Lỗi kết nối. Vui lòng kiểm tra mạng.';
+                        console.error(err);
+                    } finally {
+                        btn.disabled = false;
+                        btn.textContent = old;
                     }
-                } catch (err) {
-                    msg.textContent = 'Lỗi kết nối. Vui lòng kiểm tra mạng.';
-                    console.error(err);
-                } finally {
-                    btn.disabled = false;
-                    btn.textContent = old;
-                }
-            });
-        })();
+                });
+            })();
     </script>
 </head>
 
-<body>
+<body class="bg-brand-bg font-main">
 
-    <header>
-        <div class="container nav-wrapper">
-            <div class="logo large-heading">
-                <img src="assets/logo.png" alt="Nick Cabrejos Logo" style="height: 80px;">
+    <!-- Header (kept from before) -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-black/5">
+        <div class=" mx-auto px-6">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center gap-4">
+                    <div class="logo">
+                        <img src="assets/logo.png" alt="Nick Cabrejos Logo" class="h-20 object-contain">
+                    </div>
+                </div>
+
+                <nav class="hidden md:block">
+                    <ul class="flex items-center gap-8">
+                        <li><a href="#"
+                                class="uppercase tracking-wider text-sm font-semibold text-black font-main">Home</a>
+                        </li>
+                        <li><a href="#about-split-section"
+                                class="uppercase tracking-wider text-sm font-semibold text-black font-main">About
+                                Me</a></li>
+                        <li><a href="#products-section1"
+                                class="uppercase tracking-wider text-sm font-semibold text-black font-main">My
+                                Service</a></li>
+                        <li><a href="#products-section2"
+                                class="uppercase tracking-wider text-sm font-semibold text-black font-main">Testimonials</a>
+                        </li>
+                        <li><a href="https://app.calmcoachnick.com/login"
+                                class="px-4 py-2 rounded border border-black text-black bg-brand-accent hover:bg-black hover:text-white transition font-semibold text-sm uppercase">Course
+                                Login</a></li>
+                    </ul>
+                </nav>
+
+                <div class="md:hidden">
+                    <button id="mobile-toggle" class="text-2xl">☰</button>
+                </div>
             </div>
+        </div>
 
-            <nav class="nav-menu-items">
-                <ul class="nav-links">
-                    <li><a href="#" class="medium-heading">Home</a></li>
-                    <li><a href="#about-split-section" class="medium-heading">About Me</a>
-                    </li>
-                    <li><a href="#products-section1" class="medium-heading">My Service</a>
-                    </li>
-                    <li><a href="#products-section2" class="medium-heading">Testimonials
-                        </a>
-                    </li>
-                    <li><a href="https://app.calmcoachnick.com/login" class="btn-login medium-heading">Course Login</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="menu-toggle">☰</div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute right-6 top-full mt-2 p-4 rounded">
+            <ul class="flex flex-col gap-3">
+                <li><a href="#" class="uppercase tracking-wider text-sm font-semibold text-black">Home</a></li>
+                <li><a href="#about-split-section"
+                        class="uppercase tracking-wider text-sm font-semibold text-black">About Me</a></li>
+                <li><a href="#products-section1" class="uppercase tracking-wider text-sm font-semibold text-black">My
+                        Service</a></li>
+                <li><a href="#products-section2"
+                        class="uppercase tracking-wider text-sm font-semibold text-black">Testimonials</a></li>
+                <li><a href="https://app.calmcoachnick.com/login"
+                        class="px-4 py-2 rounded border border-black text-black bg-brand-accent hover:bg-black hover:text-white transition font-semibold text-sm uppercase">Course
+                        Login</a></li>
+            </ul>
         </div>
     </header>
 
     <main>
-        <section class="container hero-section">
-            <div class="story-content">
-                <h1
-                    style="font-family: 'Homemade Apple',cursive; font-weight: 600; color:#bd8949; font-style: italic; font-size: 26px;">
-                    Hey there
+        <!-- HERO -->
+        <section class=" mx-auto px-6 grid md:grid-cols-2 gap-12 items-center py-20">
+            <div class="space-y-6">
+                <h2 class="text-xl" style="font-family:'Homemade Apple',cursive; color:#bd8949; font-style:italic;">Hey
+                    there</h2>
+
+                <h1 class="font-serifCustom font-bold uppercase text-3xl md:text-5xl leading-tight text-black">
+                    My name is Nick Cabrejos.<br /> Welcome to a safe space designed for your peace of mind. I got your
+                    back.
                 </h1>
 
-                <h1 class="large-heading">My name is Nick Cabrejos. <br /> Welcome to a safe space designed for your
-                    peace of mind. I got your back.</h1>
-
-                <div class="story-text">
-                    <p class="normal-text">
+                <div>
+                    <p class="text-base leading-relaxed text-gray-700">
                         Sign up to get updates on my latest projects, course discounts, and behind-the-scenes
-                        announcements. Whether it’s a new video, a course update, or something unexpected I’m working
-                        on, you’ll be the first to hear about it.
+                        announcements.
+                        Whether it’s a new video, a course update, or something unexpected I’m working on, you’ll be the
+                        first to hear
+                        about it.
                     </p>
                 </div>
             </div>
 
-            <div class="main-image-wrapper">
-                <img src="assets/1.png" alt="Nick Cabrejos Portrait">
+            <div class="h-[600px] rounded-md overflow-hidden shadow-offset">
+                <img src="assets/1.png" alt="Nick Cabrejos Portrait" class="w-full h-full object-cover">
             </div>
         </section>
 
-        <section id="about-split-section" class="about-split-section">
-            <div class="about-split-container">
-                <div class="about-image-side">
-                    <img src="assets/5.jpeg" alt="Nick Cabrejos Portrait">
+        <!-- ABOUT SPLIT -->
+        <section id="about-split-section" class="bg-[#dee7e6] w-full">
+            <div class=" mx-auto px-6 grid md:grid-cols-[1fr_2fr] gap-6 py-12 items-center">
+                <div class="h-full">
+                    <img src="assets/5.jpeg" alt="Nick Cabrejos Portrait" class="w-full h-full object-cover">
                 </div>
 
-                <div class="about-content-side">
-                    <h2 class="large-heading">
-                        NICK<br>CABREJOS
-                    </h2>
+                <div class="p-6 flex flex-col justify-center">
+                    <h2 class="font-serifCustom font-bold uppercase text-4xl leading-tight">NICK<br />CABREJOS</h2>
 
-                    <h3 class="display-subtitle medium-heading">YOU'VE CARRIED ENOUGH. I'VE GOT YOUR BACK NOW.</h3>
+                    <h3 class="mt-6 pl-4 border-l-2 border-black uppercase tracking-widest font-semibold text-sm">
+                        YOU'VE CARRIED ENOUGH. I'VE GOT YOUR BACK NOW.
+                    </h3>
 
-                    <div>
-                        <p class="normal-text">
+                    <div class="mt-6">
+                        <p class="text-base leading-relaxed text-justify text-gray-700">
                             I once felt like I was suffocating under the weight of guilt, convinced I didn’t deserve
-                            happiness or even life. <br />
-                            Clinging to a quiet faith that there had to be a way out, I discovered Radical
-                            Self-Forgiveness and, through my years of studying non-dualism, fully grasped its liberating
-                            truth. My greatest test was facing my painful thoughts head-on, like standing up to a
-                            relentless bully, until their power dissolved. I emerged able to share my story without
-                            fear, free from the grip of shame. Now, I guide others who feel trapped, giving them the
-                            tools to manage their minds and return to the deep, lasting peace that is their birthright.
+                            happiness or even
+                            life. Clinging to a quiet faith that there had to be a way out, I discovered Radical
+                            Self-Forgiveness and,
+                            through my years of studying non-dualism, fully grasped its liberating truth. My greatest
+                            test was facing my
+                            painful thoughts head-on, like standing up to a relentless bully, until their power
+                            dissolved. I emerged able
+                            to share my story without fear, free from the grip of shame. Now, I guide others who feel
+                            trapped, giving
+                            them the tools to manage their minds and return to the deep, lasting peace that is their
+                            birthright.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="products-section1" class="container products-section">
-            <h1 class="large-heading" style="padding-bottom: 40px; text-align: center;">How We Heal Together</h1>
 
-            <div class="products-grid">
+        <!-- PRODUCTS / SERVICES -->
+        <section id="products-section1" class=" mx-auto px-6 py-8">
+            <h2 class="text-center font-serifCustom font-bold uppercase text-3xl mb-10">How We Heal Together</h2>
 
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="assets/product1.jpg" alt="Guided Into Stillness">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="flex flex-col items-start">
+                    <div class="w-[90%] aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
+                        <img src="assets/product1.jpg" alt="Guided Into Stillness" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="medium-heading product-title">Guided Into Stillness — 1:1 Coaching</h3>
-                    <p class="normal-text product-desc">Your Space to Breathe Again</p>
+                    <h3 class="uppercase tracking-wider font-semibold text-base">Guided Into Stillness — 1:1 Coaching
+                    </h3>
+                    <p class="text-base text-gray-700">Your Space to Breathe Again</p>
                 </div>
 
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="assets/product2.jpg" alt="Socratic Dialogues">
+                <div class="flex flex-col items-start">
+                    <div class="w-[90%] aspect-[7/5] overflow-hidden mb-6 bg-brand-accent rounded">
+                        <img src="assets/product2.jpg" alt="Socratic Dialogues" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="medium-heading product-title">Socratic Dialogues</h3>
-                    <p class="normal-text product-desc">Conversations That Quiet the Mind</p>
+                    <h3 class="uppercase tracking-wider font-semibold text-base">Socratic Dialogues</h3>
+                    <p class="text-base text-gray-700">Conversations That Quiet the Mind</p>
                 </div>
-
             </div>
         </section>
 
-        <section id="products-section2" class="gallery-text-section">
-            <div class="container">
-
-                <div class="gallery-row">
-
-                    <div class="gallery-item aspect-landscape">
-                        <img src="assets/img1.jpg" alt="Mô tả ảnh ngang 1">
+        <!-- GALLERY + TEXT (light blue) -->
+        <section id="products-section2" class="bg-light-blue-section py-20">
+            <div class="px-6">
+                <div class="flex gap-5 h-[600px] md:h-[320px] mb-10 flex-col md:flex-row">
+                    <div class="flex-[5] md:flex-[5] rounded overflow-hidden">
+                        <img src="assets/img1.jpg" alt="Mô tả ảnh ngang 1" class="w-full h-full object-cover">
                     </div>
-
-                    <div class="gallery-item aspect-portrait">
-                        <img src="assets/img2.jpg" alt="Mô tả ảnh dọc">
+                    <div class="flex-[5] md:flex-[3.5] rounded overflow-hidden">
+                        <img src="assets/img2.jpg" alt="Mô tả ảnh dọc" class="w-full h-full object-cover">
                     </div>
-
-                    <div class="gallery-item aspect-landscape">
-                        <img src="assets/img3.jpg" alt="Mô tả ảnh ngang 2">
+                    <div class="flex-[5] md:flex-[5] rounded overflow-hidden">
+                        <img src="assets/img3.jpg" alt="Mô tả ảnh ngang 2" class="w-full h-full object-cover">
                     </div>
-
                 </div>
 
-                <div class="gallery-text-bottom">
-                    <h3 class="large-heading">Relief I Didn't Have to Chase</h3>
-                    <p class="medium-heading" style="font-weight: normal; text-transform: none">
+                <div class="mx-auto max-w-3xl text-center">
+                    <h3 class="font-serifCustom font-bold uppercase text-3xl mb-4">Relief I Didn't Have to Chase</h3>
+
+                    <p class="text-base font-main" style="font-weight:400;">
                         I came to Nick exhausted, barely holding on. What I found was more than relief. Peace started
-                        showing up in small
-                        moments. Healing happened without me forcing it. And now? I actually enjoy my days again—not
-                        someday, but now. I finally
-                        feel like myself again
+                        showing up in
+                        small moments. Healing happened without me forcing it. And now? I actually enjoy my days
+                        again—not someday,
+                        but now. I finally feel like myself again
                     </p>
                 </div>
-
             </div>
         </section>
+
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-
-                <div class="footer-col">
-                    <h4 class="medium-heading">Nick Cabrejos</h4>
-                    <p class="normal-text"
-                        style="color: #ccc; font-family: var(--font-serif); font-style: italic; margin-bottom: 20px;">
-                        Returning you to the deep, lasting peace that is your birthright.
-                    </p>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://www.instagram.com/calm.mind.coach_nick/"><svg width="20" height="20"
-                                fill="#fff" viewBox="0 0 24 24">
+    <!-- --- REPLACED FOOTER (from your snippet) --- -->
+    <footer class="bg-[#1a1a1a] py-20 text-[#e0e0e0]">
+        <div class="mx-auto max-w-[1200px] px-6" bis_skin_checked="1">
+            <div class="mb-16 grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1.5fr]" bis_skin_checked="1">
+                <div bis_skin_checked="1">
+                    <h4 class="mb-6 text-base font-semibold uppercase tracking-wide text-white">Nick Cabrejos</h4>
+                    <p class="mb-6 font-['Roboto',sans-serif] italic text-[#ccc]">Returning you to the deep, lasting
+                        peace that is your birthright.</p>
+                    <div class="flex gap-4">
+                    
+                        <!-- Instagram FULL PATH -->
+                        <a href="https://www.instagram.com/calm.mind.coach_nick/" target="_blank" rel="noopener noreferrer"
+                            class="transition-opacity hover:opacity-70">
+                            <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg></a>
-                        <a href="https://www.youtube.com/@calm_mind_coachnick"><svg width="24" height="24" fill="#fff"
-                                viewBox="0 0 24 24">
+                            </svg>
+                        </a>
+                    
+                        <!-- YouTube FULL PATH -->
+                        <a href="https://www.youtube.com/@calm_mind_coachnick" target="_blank" rel="noopener noreferrer"
+                            class="transition-opacity hover:opacity-70">
+                            <svg width="24" height="24" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg></a>
-
-                        <a href="https://www.tiktok.com/@calm.mind.coach_nick">
+                            </svg>
+                        </a>
+                    
+                        <!-- TikTok FULL PATH -->
+                        <a href="https://www.tiktok.com/@calm.mind.coach_nick" target="_blank" rel="noopener noreferrer"
+                            class="transition-opacity hover:opacity-70">
                             <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M12.003 2.003c-.01 0-.02 0-.03 0-5.523 0-10 4.477-10 10 0 5.522 4.477 10 10 10s10-4.478 10-10v-.003h-4.002c0 3.314-2.686 6-6 6s-6-2.686-6-6c0-3.313 2.686-6 6-6 .01 0 .02 0 .03 0v4.002c-.01 0-.02 0-.03 0-1.104 0-2 .896-2 2s.896 2 2 2c1.104 0 2-.896 2-2v-6.002h4.002v4.002c0 .01 0 .02 0 .03 0 5.523-4.477 10-10 10s-10-4.477-10-10c0-5.523 4.477-10 10-10 .01 0 .02 0 .03 0v4.002z" />
                             </svg>
                         </a>
-                        <a href="https://open.spotify.com/show/54ZbDsSPyJTXJ9SvFlkiBl?si=b5e567932d134cac">
+                    
+                        <!-- Spotify FULL PATH -->
+                        <a href="https://open.spotify.com/show/54ZbDsSPyJTXJ9SvFlkiBl?si=b5e567932d134cac" target="_blank"
+                            rel="noopener noreferrer" class="transition-opacity hover:opacity-70">
                             <svg width="20" height="20" fill="#fff" viewBox="0 0 24 24">
                                 <path
                                     d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.454 17.309c-.236.385-.73.5-1.115.264-3.042-1.857-6.888-2.273-11.397-1.197-.414.113-.85-.129-.963-.544-.113-.415.13-.85.544-.963 4.849-1.322 8.993-.847 12.33 1.356.385.236.5.73.264 1.115zm1.581-3.631c-.295.48-.936.625-1.416.33-3.484-2.14-8.803-2.759-12.926-1.45-.52.16-1.092-.144-1.252-.664-.16-.52.144-1.092.664-1.252 4.703-1.448 10.522-.796 14.396 1.606.48.295.625.936.33 1.416zm0-3.631c-.354.577-1.123.75-1.7.396-3.926-2.432-10.093-2.641-13.986-1.388-.635.195-1.33-.178-1.525-.813-.195-.635.178-1.33.813-1.525 4.313-1.327 11.034-1.084 15.211 1.515.577.354 .75 1 .396 1.7z" />
-                            </svg></a>
+                            </svg>
+                        </a>
+                    
                     </div>
+
                 </div>
 
+                <div bis_skin_checked="1">
+                    <h4 class="mb-6 text-base font-semibold uppercase tracking-wide text-white">Stay Connected</h4>
+                    <p class="mb-4 text-sm text-[#999]">Receive insights on peace and mental freedom.</p>
 
-                <div class="footer-col">
-                    <h4 class="medium-heading">Stay Connected</h4>
-                    <p class="normal-text" style="color: #999; margin-bottom: 15px; font-size: 13px;">
-                        Receive insights on peace and mental freedom.
-                    </p>
-
-                    <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" name="email" placeholder="Your email address" class="normal-text" required>
-                        <button type="submit" class="btn-subscribe medium-heading">Subscribe</button>
+                    <!-- added id so existing JS still works -->
+                    <form id="newsletter-form" class="space-y-4">
+                        <input placeholder="Your email address"
+                            class="w-full rounded border border-[#444] bg-white/5 px-3 py-3 text-sm text-white placeholder:text-[#666]"
+                            required="" type="email" value="">
+                        <button type="submit"
+                            class="w-full rounded bg-white px-3 py-3 text-sm font-semibold uppercase tracking-wide text-black transition-colors hover:bg-[#e0e0e0] disabled:opacity-60">Subscribe</button>
                         <div class="msg" aria-live="polite" style="margin-top:10px;font-size:14px;color:#fff;"></div>
                     </form>
                 </div>
-
             </div>
 
-            <div class="footer-bottom">
-                <span class="normal-text">&copy; 2025 Nick Cabrejos. All rights reserved.</span>
-                <div>
-                    <a href="#" class="normal-text" style="margin-right: 15px;">Privacy Policy</a>
-                    <a href="#" class="normal-text">Terms of Service</a>
+            <div
+                class="flex flex-col items-center justify-between gap-4 border-t border-[#333] pt-8 text-xs text-[#666] md:flex-row">
+                <span>© 2025 Nick Cabrejos. All rights reserved.</span>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.nav-menu-items');
-        toggle.addEventListener('click', () => {
-            if (nav.style.display === 'block') {
-                nav.style.display = 'none';
-            } else {
-                nav.style.display = 'block';
-                nav.style.position = 'absolute';
-                nav.style.top = '100%';
-                nav.style.right = '20px';
-                nav.style.background = '#fff';
-                nav.style.padding = '20px';
-                nav.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-            }
+        // mobile menu toggle
+        const toggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        toggle?.addEventListener('click', () => {
+            if (!mobileMenu) return;
+            mobileMenu.classList.toggle('hidden');
         });
     </script>
 </body>
